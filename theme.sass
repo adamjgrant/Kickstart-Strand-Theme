@@ -163,14 +163,41 @@ html
 // -------
 
 =button($background-color: map-get($white, darker), $args...)
-  +button-default($args...) 
-    background: transparent 
-    // $props: keywords($args)
-    // border: 2px solid map-get($props, 'background-color')
-    border: 2px solid $background-color
+  +button-default($background-color, $args...) 
+  background: transparent 
+  border-width: 2px
+
+  &:hover, &:active
+    box-shadow: none
+
+  &:hover
+    background: $background-color
+    color: $default-font-color
+
+  &:active
+    background: darken($background-color, 10%)
+    color: $default-font-color
 
 =button-group($args...)
   +button-group-default($args...)
+  border-color: inherit
+
+=button-color($background-color: map-get($white, darker))
+  +button-color-default($background-color)
+  border: 2px solid $background-color
+  color: $background-color
+  background: transparent
+
+  &:hover
+    background: $background-color
+    color: white
+
+  &:active
+    background: darken($background-color, 10%)
+    color: white
+
+=button-size($args...)
+  +button-size-default($args...)
 
 // HR
 // --
